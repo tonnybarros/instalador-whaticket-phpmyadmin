@@ -133,6 +133,8 @@ backend_update() {
   git pull
   cd /home/deploy/whaticket/backend
   npm install
+  npm update -f
+  npm install @types/fs-extra
   rm -rf dist 
   npm run build
   npx sequelize db:migrate
