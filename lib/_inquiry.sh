@@ -3,7 +3,7 @@
 get_frontend_url() {
   
   print_banner
-  printf "${WHITE} 💻 Digite o domínio da interface web:${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Digite o domínio da interface FRONTEND:${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " frontend_url
 }
@@ -11,7 +11,7 @@ get_frontend_url() {
 get_backend_url() {
   
   print_banner
-  printf "${WHITE} 💻 Digite o domínio da sua API:${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Digite o domínio do BACKEND:${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " backend_url
 }
@@ -31,10 +31,10 @@ software_update() {
 inquiry_options() {
   
   print_banner
-  printf "${WHITE} 💻 O que você precisa fazer?${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Bem vindo(a) ao instalador Owen Zap, Selecione abaixo a proxima ação!${GRAY_LIGHT}"
   printf "\n\n"
-  printf "   [1] Instalar\n"
-  printf "   [2] Atualizar\n"
+  printf "   [1] Instalar o OwenZap\n"
+  printf "   [2] Atualizar o OwenZap\n"
   printf "\n"
   read -p "> " option
 
