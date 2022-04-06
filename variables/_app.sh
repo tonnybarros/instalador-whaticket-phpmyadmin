@@ -13,7 +13,7 @@ mysql_root_password=$(openssl rand -base64 32)
 
 db_pass=$(openssl rand -base64 32)
 
-db_user=whaticket
-db_name=whaticket
+db_user=owenzap
+db_name=owenzap
 
-deploy_email=deploy@whaticket.com
+deploy_email=deploy@owenzap.com
