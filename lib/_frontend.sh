@@ -15,7 +15,7 @@ frontend_node_dependencies() {
   sleep 2
 
   sudo su - deploy <<EOF
-  cd /home/deploy/whaticket/frontend
+  cd /home/deploy/owenzap/frontend
   npm install
 EOF
 
@@ -35,7 +35,7 @@ frontend_node_build() {
   sleep 2
 
   sudo su - deploy <<EOF
-  cd /home/deploy/whaticket/frontend
+  cd /home/deploy/owenzap/frontend
   npm install
   npm run build
 EOF
@@ -56,9 +56,9 @@ frontend_update() {
   sleep 2
 
   sudo su - deploy <<EOF
-  cd /home/deploy/whaticket
+  cd /home/deploy/owenzap
   git pull
-  cd /home/deploy/whaticket/frontend
+  cd /home/deploy/owenzap/frontend
   npm install
   rm -rf build
   npm run build
@@ -87,8 +87,9 @@ frontend_set_env() {
   backend_url=https://$backend_url
 
 sudo su - deploy << EOF
-  cat <<[-]EOF > /home/deploy/whaticket/frontend/.env
+  cat <<[-]EOF > /home/deploy/owenzap/frontend/.env
 REACT_APP_BACKEND_URL=${backend_url}
+REACT_APP_HOURS_CLOSE_TICKETS_AUTO = 24
 [-]EOF
 EOF
 
@@ -108,8 +109,8 @@ frontend_start_pm2() {
   sleep 2
 
   sudo su - deploy <<EOF
-  cd /home/deploy/whaticket/frontend
-  pm2 start server.js --name whaticket-frontend
+  cd /home/deploy/owenzap/frontend
+  pm2 start server.js --name owenzap-frontend
   pm2 save
 EOF
 
@@ -132,7 +133,7 @@ frontend_nginx_setup() {
 
 sudo su - root << EOF
 
-cat > /etc/nginx/sites-available/whaticket-frontend << 'END'
+cat > /etc/nginx/sites-available/owenzap-frontend << 'END'
 server {
   server_name $frontend_hostname;
 
@@ -150,7 +151,7 @@ server {
 }
 END
 
-ln -s /etc/nginx/sites-available/whaticket-frontend /etc/nginx/sites-enabled
+ln -s /etc/nginx/sites-available/owenzap-frontend /etc/nginx/sites-enabled
 EOF
 
   sleep 2
