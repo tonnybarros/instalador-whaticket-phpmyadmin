@@ -29,13 +29,13 @@ EOF
 #######################################
 system_git_clone() {
   print_banner
-  printf "${WHITE} 💻 Fazendo download do código whaticket...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Fazendo download do código Owen Zap...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 
   sudo su - deploy <<EOF
-  git clone https://github.com/w3nder/whaticket  /home/deploy/whaticket/
+  git clone https://github.com/canove/whaticket  /home/deploy/owenzap/
 EOF
 
   sleep 2
@@ -48,7 +48,7 @@ EOF
 #######################################
 system_update() {
   print_banner
-  printf "${WHITE} 💻 Vamos atualizar o sistema...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Vamos atualizar o sistema Owen Zap...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -290,7 +290,7 @@ system_nginx_conf() {
 
 sudo su - root << EOF
 
-cat > /etc/nginx/conf.d/whaticket.conf << 'END'
+cat > /etc/nginx/conf.d/owenzap.conf << 'END'
 client_max_body_size 20M;
 END
 
