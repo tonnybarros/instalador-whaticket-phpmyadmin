@@ -54,7 +54,7 @@ system_update() {
   sleep 2
 
   sudo su - root <<EOF
-  apt -y update && apt -y upgrade
+  apt -y update
 EOF
 
   sleep 2
