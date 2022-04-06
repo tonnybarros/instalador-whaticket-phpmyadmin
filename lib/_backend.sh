@@ -16,7 +16,7 @@ backend_mysql_create() {
 
   sudo su - root <<EOF
   usermod -aG docker deploy
-  docker run --name whaticketdb \
+  docker run --name owenzap \
                 -e MYSQL_ROOT_PASSWORD=${mysql_root_password} \
                 -e MYSQL_DATABASE=${db_name} \
                 -e MYSQL_USER=${db_user} \
@@ -54,7 +54,7 @@ backend_set_env() {
   frontend_url=https://$frontend_url
 
 sudo su - deploy << EOF
-  cat <<[-]EOF > /home/deploy/whaticket/backend/.env
+  cat <<[-]EOF > /home/deploy/owenzap/backend/.env
 NODE_ENV=
 BACKEND_URL=${backend_url}
 FRONTEND_URL=${frontend_url}
@@ -69,6 +69,9 @@ DB_NAME=${db_name}
 
 JWT_SECRET=${jwt_secret}
 JWT_REFRESH_SECRET=${jwt_refresh_secret}
+
+USER_LIMIT=3
+CONNECTIONS_LIMIT=1
 [-]EOF
 EOF
 
@@ -88,7 +91,7 @@ backend_node_dependencies() {
   sleep 2
 
   sudo su - deploy <<EOF
-  cd /home/deploy/whaticket/backend
+  cd /home/deploy/owenzap/backend
   npm install
 EOF
 
@@ -108,7 +111,7 @@ backend_node_build() {
   sleep 2
 
   sudo su - deploy <<EOF
-  cd /home/deploy/whaticket/backend
+  cd /home/deploy/owenzap/backend
   npm install
   npm run build
 EOF
@@ -129,9 +132,9 @@ backend_update() {
   sleep 2
 
   sudo su - deploy <<EOF
-  cd /home/deploy/whaticket
+  cd /home/deploy/owenzap
   git pull
-  cd /home/deploy/whaticket/backend
+  cd /home/deploy/owenzap/backend
   npm install
   npm update -f
   npm install @types/fs-extra
@@ -158,7 +161,7 @@ backend_db_migrate() {
   sleep 2
 
   sudo su - deploy <<EOF
-  cd /home/deploy/whaticket/backend
+  cd /home/deploy/owenzap/backend
   npx sequelize db:migrate
 EOF
 
@@ -178,7 +181,7 @@ backend_db_seed() {
   sleep 2
 
   sudo su - deploy <<EOF
-  cd /home/deploy/whaticket/backend
+  cd /home/deploy/owenzap/backend
   npx sequelize db:seed:all
 EOF
 
@@ -199,8 +202,8 @@ backend_start_pm2() {
   sleep 2
 
   sudo su - deploy <<EOF
-  cd /home/deploy/whaticket/backend
-  pm2 start dist/server.js --name whaticket-backend
+  cd /home/deploy/owenzap/backend
+  pm2 start dist/server.js --name owenzap-backend
 EOF
 
   sleep 2
@@ -222,7 +225,7 @@ backend_nginx_setup() {
 
 sudo su - root << EOF
 
-cat > /etc/nginx/sites-available/whaticket-backend << 'END'
+cat > /etc/nginx/sites-available/owenzap-backend << 'END'
 server {
   server_name $backend_hostname;
 
@@ -240,7 +243,7 @@ server {
 }
 END
 
-ln -s /etc/nginx/sites-available/whaticket-backend /etc/nginx/sites-enabled
+ln -s /etc/nginx/sites-available/owenzap-backend /etc/nginx/sites-enabled
 EOF
 
   sleep 2
