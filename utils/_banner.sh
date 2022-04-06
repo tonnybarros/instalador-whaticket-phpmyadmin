@@ -10,6 +10,7 @@
 #   WHITE
 #   CYAN_LIGHT
 #   RED
+#   BLUE
 #   GREEN
 #   YELLOW
 # Arguments:
@@ -21,14 +22,14 @@ print_banner() {
 
   printf "\n\n"
 
-  printf "${GREEN}";
+  printf "${BLUE}";
   printf "                                                     ▄▄█▀▀▀▀▀▀▀█▄▄  \n";
-  printf "                                                   ${GREEN}▄█▀${NC}   ${WHITE}▄▄${NC}      ${GREEN}▀█▄\n";
-  printf "                                                   ${GREEN}█${NC}    ${WHITE}███${NC}         ${GREEN}█\n";
-  printf "                                                   ${GREEN}█${NC}    ${WHITE}██▄         ${GREEN}█${NC}\n";
-  printf "                                                   ${GREEN}█${NC}     ${WHITE}▀██▄${NC} ${WHITE}██${NC}    ${GREEN}█\n";
-  printf "                                                   ${GREEN}█${NC}       ${WHITE}▀███▀${NC}    ${GREEN}█\n";
-  printf "                                                   ${GREEN}▀█▄           ▄█▀\n";
+  printf "                                                   ${BLUE}▄█▀${NC}   ${WHITE}▄▄${NC}      ${BLUE}▀█▄\n";
+  printf "                                                   ${BLUE}█${NC}    ${WHITE}███${NC}         ${BLUE}█\n";
+  printf "                                                   ${BLUE}█${NC}    ${WHITE}██▄         ${BLUE}█${NC}\n";
+  printf "                                                   ${BLUE}█${NC}     ${WHITE}▀██▄${NC} ${WHITE}██${NC}    ${BLUE}█\n";
+  printf "                                                   ${BLUE}█${NC}       ${WHITE}▀███▀${NC}    ${BLUE}█\n";
+  printf "                                                   ${BLUE}▀█▄           ▄█▀\n";
   printf "                                                    ▄█    ▄▄▄▄█▀▀  \n";
   printf "                                                    █  ▄█▀        \n";
   printf "                                                    ▀▀▀▀          \n";
@@ -36,12 +37,12 @@ print_banner() {
 
   printf "\n"
 
-  printf "${GREEN}";
-  printf "██     ██ ██   ██  █████  ████████ ██  ██████ ██   ██ ███████ ████████\n";
-  printf "██     ██ ██   ██ ██   ██    ██    ██ ██      ██  ██  ██         ██   \n";
-  printf "██  █  ██ ███████ ███████    ██    ██ ██      █████   █████      ██   \n";
-  printf "██ ███ ██ ██   ██ ██   ██    ██    ██ ██      ██  ██  ██         ██   \n";
-  printf " ███ ███  ██   ██ ██   ██    ██    ██  ██████ ██   ██ ███████    ██   \n";
+  printf "${BLUE}";
+  printf "███████ ██     ██  ███████  ████    ██           ██████████   █████████  ████████   \n";
+  printf "██   ██ ██     ██  ██       ██ ██   ██                  ███   ██     ██  ██    ██      \n";
+  printf "███████ ██  █  ██  ███████  ██  ██  ██  ██████       ███      █████████  ████████               \n";
+  printf "██   ██ ██ ███ ██  ██       ██   ██ ██            ███         ██     ██  ██        \n";
+  printf "███████  ███ ███   ███████  ██    ████           ██████████   ██     ██  ██       \n";
   printf "${NC}";
 
   printf "\n"
