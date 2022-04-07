@@ -1,5 +1,13 @@
 #!/bin/bash
 
+get_instancia_add() {
+  
+  print_banner
+  printf "${WHITE} 💻 Digite o nome da instancia a ser instalada (Utilizar Letras minusculas):${GRAY_LIGHT}"
+  printf "\n\n"
+  read -p "> " instancia_add
+}
+
 get_frontend_url() {
   
   print_banner
@@ -18,6 +26,7 @@ get_backend_url() {
 
 get_urls() {
   
+  get_instancia_add
   get_frontend_url
   get_backend_url
 }
