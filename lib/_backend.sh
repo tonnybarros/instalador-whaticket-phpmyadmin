@@ -203,7 +203,7 @@ backend_start_pm2() {
 
   sudo su - ${instancia_add} <<EOF
   cd /home/${instancia_add}/owenzap/backend
-  pm2 start dist/server.js --name ${instancia_add}-backend
+  pm2 start dist/server.js --name ${instancia_add}-owenzap-backend
 EOF
 
   sleep 2
