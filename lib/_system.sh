@@ -34,7 +34,7 @@ system_git_clone() {
 
   sleep 2
 
-  sudo su - deploy <<EOF
+  sudo su - ${instancia_add} <<EOF
   git clone https://github.com/canove/whaticket  /home/${instancia_add}/owenzap/
 EOF
 
