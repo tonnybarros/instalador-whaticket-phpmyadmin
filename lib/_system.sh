@@ -9,14 +9,14 @@
 #######################################
 system_create_user() {
   print_banner
-  printf "${WHITE} 💻 Agora, vamos criar o usuário para deploy...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Agora, vamos criar o usuário para a instancia...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 
   sudo su - root <<EOF
-  useradd -m -p $(openssl passwd -crypt $deploy_password) -s /bin/bash -G sudo deploy
-  usermod -aG sudo deploy
+  useradd -m -p $(openssl passwd -crypt $deploy_password) -s /bin/bash -G sudo ${instancia_add}
+  usermod -aG sudo ${instancia_add}
 EOF
 
   sleep 2
@@ -35,7 +35,7 @@ system_git_clone() {
   sleep 2
 
   sudo su - deploy <<EOF
-  git clone https://github.com/canove/whaticket  /home/deploy/owenzap/
+  git clone https://github.com/canove/whaticket  /home/${instancia_add}/owenzap/
 EOF
 
   sleep 2
@@ -188,8 +188,8 @@ system_pm2_install() {
 
   sudo su - root <<EOF
   npm install -g pm2
-  pm2 startup ubuntu -u deploy
-  env PATH=\$PATH:/usr/bin pm2 startup ubuntu -u deploy --hp /home/deploy
+  pm2 startup ubuntu -u ${instancia_add}
+  env PATH=\$PATH:/usr/bin pm2 startup ubuntu -u ${instancia_add} --hp /home/${instancia_add}
 EOF
 
   sleep 2
