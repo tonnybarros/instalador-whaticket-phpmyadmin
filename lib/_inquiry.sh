@@ -16,6 +16,14 @@ get_frontend_url() {
   read -p "> " frontend_url
 }
 
+get_frontend_port() {
+  
+  print_banner
+  printf "${WHITE} 💻 Digite a porta do FRONTEND para esta instancia; Ex: 3333 ${GRAY_LIGHT}"
+  printf "\n\n"
+  read -p "> " frontend_port
+}
+
 get_backend_url() {
   
   print_banner
@@ -24,11 +32,21 @@ get_backend_url() {
   read -p "> " backend_url
 }
 
+get_backend_port() {
+  
+  print_banner
+  printf "${WHITE} 💻 Digite a porta do BACKEND para esta instancia; Ex: 8080 ${GRAY_LIGHT}"
+  printf "\n\n"
+  read -p "> " backend_port
+}
+
 get_urls() {
   
   get_instancia_add
   get_frontend_url
+  get_frontend_port
   get_backend_url
+  get_backend_port
 }
 
 software_update() {
