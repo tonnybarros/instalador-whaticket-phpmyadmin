@@ -13,7 +13,7 @@ mysql_root_password=$(openssl rand -base64 32)
 
 db_pass=$(openssl rand -base64 32)
 
-db_user=owenzap
-db_name=owenzap
+db_user=${instancia_add}
+db_name=${instancia_add}
 
-deploy_email=deploy@owenzap.com
+deploy_email=${instancia_add}@owenzap.com
