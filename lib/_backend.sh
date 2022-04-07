@@ -15,8 +15,8 @@ backend_mysql_create() {
   sleep 2
 
   sudo su - root <<EOF
-  usermod -aG docker deploy
-  docker run --name owenzap \
+  usermod -aG docker ${instancia_add}
+  docker run --name ${instancia_add} \
                 -e MYSQL_ROOT_PASSWORD=${mysql_root_password} \
                 -e MYSQL_DATABASE=${db_name} \
                 -e MYSQL_USER=${db_user} \
@@ -54,7 +54,7 @@ backend_set_env() {
   frontend_url=https://$frontend_url
 
 sudo su - deploy << EOF
-  cat <<[-]EOF > /home/deploy/owenzap/backend/.env
+  cat <<[-]EOF > /home/${instancia_add}/owenzap/backend/.env
 NODE_ENV=
 BACKEND_URL=${backend_url}
 FRONTEND_URL=${frontend_url}
@@ -90,8 +90,8 @@ backend_node_dependencies() {
 
   sleep 2
 
-  sudo su - deploy <<EOF
-  cd /home/deploy/owenzap/backend
+  sudo su - ${instancia_add} <<EOF
+  cd /home/${instancia_add}/owenzap/backend
   npm install
 EOF
 
@@ -110,8 +110,8 @@ backend_node_build() {
 
   sleep 2
 
-  sudo su - deploy <<EOF
-  cd /home/deploy/owenzap/backend
+  sudo su - ${instancia_add} <<EOF
+  cd /home/${instancia_add}/owenzap/backend
   npm install
   npm run build
 EOF
@@ -131,10 +131,10 @@ backend_update() {
 
   sleep 2
 
-  sudo su - deploy <<EOF
-  cd /home/deploy/owenzap
+  sudo su - ${instancia_add} <<EOF
+  cd /home/${instancia_add}/owenzap
   git pull
-  cd /home/deploy/owenzap/backend
+  cd /home/${instancia_add}/owenzap/backend
   npm install
   npm update -f
   npm install @types/fs-extra
@@ -160,8 +160,8 @@ backend_db_migrate() {
 
   sleep 2
 
-  sudo su - deploy <<EOF
-  cd /home/deploy/owenzap/backend
+  sudo su - ${instancia_add} <<EOF
+  cd /home/${instancia_add}/owenzap/backend
   npx sequelize db:migrate
 EOF
 
@@ -180,8 +180,8 @@ backend_db_seed() {
 
   sleep 2
 
-  sudo su - deploy <<EOF
-  cd /home/deploy/owenzap/backend
+  sudo su - ${instancia_add} <<EOF
+  cd /home/${instancia_add}/owenzap/backend
   npx sequelize db:seed:all
 EOF
 
@@ -201,9 +201,9 @@ backend_start_pm2() {
 
   sleep 2
 
-  sudo su - deploy <<EOF
-  cd /home/deploy/owenzap/backend
-  pm2 start dist/server.js --name owenzap-backend
+  sudo su - ${instancia_add} <<EOF
+  cd /home/${instancia_add}/owenzap/backend
+  pm2 start dist/server.js --name ${instancia_add}-backend
 EOF
 
   sleep 2
@@ -225,7 +225,7 @@ backend_nginx_setup() {
 
 sudo su - root << EOF
 
-cat > /etc/nginx/sites-available/owenzap-backend << 'END'
+cat > /etc/nginx/sites-available/${instancia_add}-backend << 'END'
 server {
   server_name $backend_hostname;
 
@@ -243,7 +243,7 @@ server {
 }
 END
 
-ln -s /etc/nginx/sites-available/owenzap-backend /etc/nginx/sites-enabled
+ln -s /etc/nginx/sites-available/${instancia_add}-backend /etc/nginx/sites-enabled
 EOF
 
   sleep 2
