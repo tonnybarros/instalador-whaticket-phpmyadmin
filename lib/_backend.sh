@@ -53,13 +53,13 @@ backend_set_env() {
   frontend_url=${frontend_url%%/*}
   frontend_url=https://$frontend_url
 
-sudo su - deploy << EOF
+sudo su - ${instancia_add} << EOF
   cat <<[-]EOF > /home/${instancia_add}/owenzap/backend/.env
 NODE_ENV=
 BACKEND_URL=${backend_url}
 FRONTEND_URL=${frontend_url}
 PROXY_PORT=443
-PORT=8080
+PORT=${backend_port}
 
 DB_HOST=localhost
 DB_DIALECT=
@@ -230,7 +230,7 @@ server {
   server_name $backend_hostname;
 
   location / {
-    proxy_pass http://127.0.0.1:8080;
+    proxy_pass http://127.0.0.1:${backend_port};
     proxy_http_version 1.1;
     proxy_set_header Upgrade \$http_upgrade;
     proxy_set_header Connection 'upgrade';
