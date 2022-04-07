@@ -16,4 +16,4 @@ db_pass=$(openssl rand -base64 32)
 db_user=${instancia_add}
 db_name=${instancia_add}
 
-deploy_email=${instancia_add}@owenzap.com
+deploy_email=deploy@deploy.com
