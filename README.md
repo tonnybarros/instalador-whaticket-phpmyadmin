@@ -2,29 +2,27 @@ Interactive CLI tool for installing and updating whaticket
 
 ### download & setup
 
-Firstly, you need to download it:
+FAZENDO DOWNLOAD DO INSTALADOR:
 
 
 ```bash
-sudo apt -y update && apt -y upgrade
-sudo apt install -y git
-git clone https://github.com/owenzap/owenzap_installer.git
+sudo apt install -y git && git clone https://github.com/owenzap/owenzap_install.git
 ```
 
-Now, all you gotta do is making it executable:
+DANDO PERMISÃO AO INSTALADOR:
 
 ```bash
-sudo chmod +x ./owenzap_installer/owenzap
+sudo chmod +x ./owenzap_install/owenzap
 ```
 
 ### usage
 
-After downloading and making it executable, you need to **navigate into** the installer directory and **run the script with sudo**:
+ACESSANDO DIRETORIO DO INSTALADOR:
 
 ```bash
-cd ./owenzap_installer
+cd ./owenzap_install
 ```
-
+INICIANDO O INSTALADOR:
 ```bash
 sudo ./owenzap
 ```
