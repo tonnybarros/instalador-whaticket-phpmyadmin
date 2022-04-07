@@ -1,5 +1,5 @@
 #!/bin/bash
-# 
+#
 # functions for setting up app backend
 
 #######################################
