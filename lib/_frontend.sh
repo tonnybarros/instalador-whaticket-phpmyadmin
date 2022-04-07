@@ -94,6 +94,23 @@ REACT_APP_HOURS_CLOSE_TICKETS_AUTO = 24
 EOF
 
   sleep 2
+
+sudo su - ${instancia_add} << EOF
+  cat <<[-]EOF > /home/${instancia_add}/owenzap/frontend/server.js
+//simple express server to run frontend production build;
+const express = require("express");
+const path = require("path");
+const app = express();
+app.use(express.static(path.join(__dirname, "build")));
+app.get("/*", function (req, res) {
+	res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+app.listen(${frontend_port});
+
+[-]EOF
+EOF
+
+  sleep 2
 }
 
 #######################################
