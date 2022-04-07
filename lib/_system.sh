@@ -290,7 +290,7 @@ system_nginx_conf() {
 
 sudo su - root << EOF
 
-cat > /etc/nginx/conf.d/${instancia_add}.conf << 'END'
+cat > /etc/nginx/conf.d/owenzap.conf << 'END'
 client_max_body_size 20M;
 END
 
