@@ -94,7 +94,10 @@ system_docker_install() {
 
   sudo su - root <<EOF
 
-  apt install -y mysql-server
+ apt install -y mysql-server
+ mysql -u root -B -N -e "
+ ALTER USER 'root'@'localhost' IDENTIFIED BY '${mysql_root_password}';
+ FLUSH PRIVILEGES;
 
 EOF
 
