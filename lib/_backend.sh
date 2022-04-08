@@ -15,17 +15,13 @@ backend_mysql_create() {
   sleep 2
 
   sudo su - root <<EOF
-  usermod -aG docker owenzap
-  docker run --name owenzap \
-                -e MYSQL_ROOT_PASSWORD=${mysql_root_password} \
-                -e MYSQL_DATABASE=${db_name} \
-                -e MYSQL_USER=${db_user} \
-                -e MYSQL_PASSWORD=${db_pass} \
-             --restart always \
-                -p 3306:3306 \
-                -d mariadb:latest \
-             --character-set-server=utf8mb4 \
-             --collation-server=utf8mb4_bin
+    mysql -u root -p${mysql_root_password}
+    CREATE USER '${instancia_add}'@'%' IDENTIFIED BY '${mysql_root_password}';
+    CREATE DATABASE ${instancia_add} character set UTF8mb4 collate utf8mb4_bin;
+    GRANT ALL PRIVILEGES ON ${instancia_add}.* TO ${instancia_add}@'%';
+    FLUSH PRIVILEGES;
+    exit
+
 EOF
 
   sleep 2
@@ -61,10 +57,10 @@ FRONTEND_URL=${frontend_url}
 PROXY_PORT=443
 PORT=${backend_port}
 DB_HOST=localhost
-DB_DIALECT=
-DB_USER=${db_user}
-DB_PASS=${db_pass}
-DB_NAME=${db_name}
+DB_DIALECT=mysql
+DB_USER=${instancia_add}
+DB_PASS=${mysql_root_password}
+DB_NAME=${instancia_add}
 JWT_SECRET=${jwt_secret}
 JWT_REFRESH_SECRET=${jwt_refresh_secret}
 USER_LIMIT=3
