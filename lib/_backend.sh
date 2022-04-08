@@ -15,8 +15,8 @@ backend_mysql_create() {
   sleep 2
 
   sudo su - root <<EOF
-  usermod -aG docker ${instancia_add}
-  docker run --name ${instancia_add} \
+  usermod -aG docker owenzap
+  docker run --name owenzap \
                 -e MYSQL_ROOT_PASSWORD=${mysql_root_password} \
                 -e MYSQL_DATABASE=${db_name} \
                 -e MYSQL_USER=${db_user} \
