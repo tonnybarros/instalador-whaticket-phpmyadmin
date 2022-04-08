@@ -15,12 +15,17 @@ backend_mysql_create() {
   sleep 2
 
   sudo su - root <<EOF
-     mysql -u root -p${mysql_root_password} -B -N -e "
-    CREATE USER '${instancia_add}'@'%' IDENTIFIED BY '${mysql_root_password}';
-    CREATE DATABASE ${instancia_add} character set utf8mb4 collate utf8mb4_bin;
-    GRANT ALL PRIVILEGES ON ${instancia_add}.* TO ${instancia_add}@'%';
-    FLUSH PRIVILEGES;
-
+  usermod -aG docker ${instancia_add}
+  docker run --name ${instancia_add} \
+                -e MYSQL_ROOT_PASSWORD=${mysql_root_password} \
+                -e MYSQL_DATABASE=${db_name} \
+                -e MYSQL_USER=${db_user} \
+                -e MYSQL_PASSWORD=${db_pass} \
+             --restart always \
+                -p 3306:3306 \
+                -d mariadb:latest \
+             --character-set-server=utf8mb4 \
+             --collation-server=utf8mb4_bin
 EOF
 
   sleep 2
@@ -55,16 +60,13 @@ BACKEND_URL=${backend_url}
 FRONTEND_URL=${frontend_url}
 PROXY_PORT=443
 PORT=${backend_port}
-
 DB_HOST=localhost
-DB_DIALECT=mysql
-DB_USER=${instancia_add}
-DB_PASS=${mysql_root_password}
-DB_NAME=${instancia_add}
-
+DB_DIALECT=
+DB_USER=${db_user}
+DB_PASS=${db_pass}
+DB_NAME=${db_name}
 JWT_SECRET=${jwt_secret}
 JWT_REFRESH_SECRET=${jwt_refresh_secret}
-
 USER_LIMIT=3
 CONNECTIONS_LIMIT=1
 [-]EOF
@@ -219,11 +221,9 @@ backend_nginx_setup() {
   backend_hostname=$(echo "${backend_url/https:\/\/}")
 
 sudo su - root << EOF
-
 cat > /etc/nginx/sites-available/${instancia_add}-backend << 'END'
 server {
   server_name $backend_hostname;
-
   location / {
     proxy_pass http://127.0.0.1:${backend_port};
     proxy_http_version 1.1;
@@ -237,7 +237,6 @@ server {
   }
 }
 END
-
 ln -s /etc/nginx/sites-available/${instancia_add}-backend /etc/nginx/sites-enabled
 EOF
 
