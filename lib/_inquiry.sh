@@ -3,7 +3,7 @@
 get_link_github() {
   
   print_banner
-  printf "${WHITE} 💻 Digite o Link do repositorio GITHUB do que deseja instalar:${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Digite o Link do repositório GITHUB que deseja instalar:${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " link_github
 
