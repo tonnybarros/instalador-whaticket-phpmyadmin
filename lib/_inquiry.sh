@@ -1,12 +1,5 @@
 #!/bin/bash
 
-get_link_github() {
-  
-  print_banner
-  printf "${WHITE} 💻 Digite o Link do repositório GITHUB que deseja instalar:${GRAY_LIGHT}"
-  printf "\n\n"
-  read -p "> " link_github
-
 get_instancia_add() {
   
   print_banner
@@ -48,7 +41,6 @@ get_backend_port() {
 }
 
 get_urls() {
-  get_link_github
   get_instancia_add
   get_frontend_url
   get_backend_url
