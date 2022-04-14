@@ -35,7 +35,7 @@ system_git_clone() {
   sleep 2
 
   sudo su - owenzap <<EOF
-  git clone https://github.com/owenzap/owenzap  /home/${instancia_add}/
+  git clone https://github.com/owenzap/owenzap  /home/${instancia_add}/owenzap/
 EOF
 
   sleep 2
@@ -186,7 +186,7 @@ system_pm2_install() {
   sudo su - root <<EOF
   npm install -g pm2
   pm2 startup ubuntu -u owenzap
-  env PATH=\$PATH:/usr/bin pm2 startup ubuntu -u owenzap --hp /home/${instancia_add}
+  env PATH=\$PATH:/usr/bin pm2 startup ubuntu -u owenzap --hp /home/${instancia_add}/owenzap
 EOF
 
   sleep 2
