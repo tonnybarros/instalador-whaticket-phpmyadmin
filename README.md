@@ -13,6 +13,6 @@ cd && cd ./owenzap_install && sudo ./install_primaria
 
 ACESSANDO DIRETORIO DO INSTALADOR & INICIANDO INSTALAÇÕES ADICIONAIS:
 ```bash
-cd && cd ./owenzap_install && sudo ./isntall_instancia
+cd && cd ./owenzap_install && sudo ./install_instancia
 ```
 
