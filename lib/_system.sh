@@ -32,10 +32,11 @@ system_git_clone() {
   printf "${WHITE} 💻 Fazendo download do código Owen Zap...${GRAY_LIGHT}"
   printf "\n\n"
 
+
   sleep 2
 
   sudo su - owenzap <<EOF
-  git clone https://github.com/owenzap/owenzap  /home/${instancia_add}/owenzap/
+  git clone https://github.com/owenzap/owenzap  /home/owenzap/${instancia_add}/
 EOF
 
   sleep 2
@@ -186,7 +187,7 @@ system_pm2_install() {
   sudo su - root <<EOF
   npm install -g pm2
   pm2 startup ubuntu -u owenzap
-  env PATH=\$PATH:/usr/bin pm2 startup ubuntu -u owenzap --hp /home/${instancia_add}/owenzap
+  env PATH=\$PATH:/usr/bin pm2 startup ubuntu -u owenzap --hp /home/owenzap/${instancia_add}
 EOF
 
   sleep 2
