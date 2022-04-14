@@ -15,8 +15,8 @@ system_create_user() {
   sleep 2
 
   sudo su - root <<EOF
-  useradd -m -p $(openssl passwd -crypt $deploy_password) -s /bin/bash -G sudo ${instancia_add}
-  usermod -aG sudo ${instancia_add}
+  useradd -m -p $(openssl passwd -crypt $deploy_password) -s /bin/bash -G sudo owenzap
+  usermod -aG sudo owenzap
 EOF
 
   sleep 2
@@ -34,8 +34,8 @@ system_git_clone() {
 
   sleep 2
 
-  sudo su - ${instancia_add} <<EOF
-  git clone https://github.com/owenzap/owenzap  /home/${instancia_add}/owenzap/
+  sudo su - owenzap <<EOF
+  git clone https://github.com/owenzap/owenzap  /home/${instancia_add}/
 EOF
 
   sleep 2
@@ -185,8 +185,8 @@ system_pm2_install() {
 
   sudo su - root <<EOF
   npm install -g pm2
-  pm2 startup ubuntu -u ${instancia_add}
-  env PATH=\$PATH:/usr/bin pm2 startup ubuntu -u ${instancia_add} --hp /home/${instancia_add}
+  pm2 startup ubuntu -u owenzap
+  env PATH=\$PATH:/usr/bin pm2 startup ubuntu -u owenzap --hp /home/${instancia_add}
 EOF
 
   sleep 2
