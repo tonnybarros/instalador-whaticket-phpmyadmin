@@ -1,30 +1,18 @@
-Interactive CLI tool for installing and updating whaticket
-
 FAZENDO DOWNLOAD DO INSTALADOR:
 
 
 ```bash
-sudo apt install -y git && git clone https://github.com/owenzap/owenzap_install.git
+sudo apt install -y git && git clone https://github.com/owenzap/owenzap_install.git && sudo chmod +x ./owenzap_install/owenzap
 ```
 
-DANDO PERMISÃO AO INSTALADOR:
+ACESSANDO DIRETORIO DO INSTALADOR & INICIANDO O INSTALADOR (PRIMEIRA INSTALAÇÃO):
 
 ```bash
-sudo chmod +x ./owenzap_install/owenzap
+cd && cd ./owenzap_install && sudo ./install_primaria
 ```
 
-ACESSANDO DIRETORIO DO INSTALADOR:
-
+ACESSANDO DIRETORIO DO INSTALADOR & INICIANDO INSTALAÇÕES ADICIONAIS:
 ```bash
-cd ./owenzap_install
-```
-INICIANDO O INSTALADOR (PRIMEIRA INSTALAÇÃO:
-```bash
-sudo ./install_primaria
-```
-
-INICIANDO O INSTALADOR (INSTALANDO INSTANCIA ADICIONAIS:
-```bash
-sudo ./install_instancia
+cd && cd ./owenzap_install && sudo ./install_primaria
 ```
 
