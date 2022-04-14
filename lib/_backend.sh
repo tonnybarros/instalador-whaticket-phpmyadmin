@@ -50,7 +50,7 @@ backend_set_env() {
   frontend_url=https://$frontend_url
 
 sudo su - owenzap << EOF
-  cat <<[-]EOF > /home/${instancia_add}/backend/.env
+  cat <<[-]EOF > /home/${instancia_add}/owenzap/backend/.env
 NODE_ENV=
 BACKEND_URL=${backend_url}
 FRONTEND_URL=${frontend_url}
@@ -84,7 +84,7 @@ backend_node_dependencies() {
   sleep 2
 
   sudo su - owenzap <<EOF
-  cd /home/${instancia_add}/backend
+  cd /home/${instancia_add}/owenzap/backend
   npm install
 EOF
 
@@ -104,7 +104,7 @@ backend_node_build() {
   sleep 2
 
   sudo su - owenzap <<EOF
-  cd /home/${instancia_add}/backend
+  cd /home/${instancia_add}/owenzap/backend
   npm install
   npm run build
 EOF
@@ -125,9 +125,9 @@ backend_update() {
   sleep 2
 
   sudo su - owenzap <<EOF
-  cd /home/${instancia_add}
+  cd /home/${instancia_add}/owenzap
   git pull
-  cd /home/${instancia_add}/backend
+  cd /home/${instancia_add}/owenzap/backend
   npm install
   npm update -f
   npm install @types/fs-extra
@@ -154,7 +154,7 @@ backend_db_migrate() {
   sleep 2
 
   sudo su - owenzap <<EOF
-  cd /home/${instancia_add}/backend
+  cd /home/${instancia_add}/owenzap/backend
   npx sequelize db:migrate
 EOF
 
@@ -174,7 +174,7 @@ backend_db_seed() {
   sleep 2
 
   sudo su - owenzap <<EOF
-  cd /home/${instancia_add}/backend
+  cd /home/${instancia_add}/owenzap/backend
   npx sequelize db:seed:all
 EOF
 
@@ -195,7 +195,7 @@ backend_start_pm2() {
   sleep 2
 
   sudo su - owenzap <<EOF
-  cd /home/${instancia_add}/backend
+  cd /home/${instancia_add}/owenzap/backend
   pm2 start dist/server.js --name ${instancia_add}-owenzap-backend
 EOF
 
