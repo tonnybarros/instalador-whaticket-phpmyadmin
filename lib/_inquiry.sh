@@ -3,7 +3,7 @@
 get_link_git() {
   
   print_banner
-  printf "${WHITE} 💻 Insira o link GITHUB para iniciar:${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Insira o link GITHUB para iniciar a instalação:${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " link_git
 }
