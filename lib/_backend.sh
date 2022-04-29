@@ -126,6 +126,7 @@ backend_update() {
 
   sudo su - owenzap <<EOF
   cd /home/owenzap/${instancia_add}
+  pm2 stop ${instancia_add}-owenzap-backend
   git pull
   cd /home/owenzap/${instancia_add}/backend
   npm install
@@ -135,7 +136,7 @@ backend_update() {
   npm run build
   npx sequelize db:migrate
   npx sequelize db:seed
-  pm2 restart all
+  pm2 start ${instancia_add}-owenzap-backend 
 EOF
 
   sleep 2
