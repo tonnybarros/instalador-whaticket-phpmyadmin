@@ -3,7 +3,7 @@
 get_link_git() {
   
   print_banner
-  printf "${WHITE} 💻 Insira o link GITHUB para iniciar a instalação:${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Insira o link GITHUB para iniciar:${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " link_git
 }
@@ -11,7 +11,7 @@ get_link_git() {
 get_instancia_add() {
   
   print_banner
-  printf "${WHITE} 💻 Digite o nome da instancia a ser instalada (Utilizar Letras minusculas):${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Digite o nome da instancia a ser configurada (Utilizar Letras minusculas):${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " instancia_add
 }
@@ -58,7 +58,8 @@ get_urls() {
 }
 
 software_update() {
-  
+  get_link_git
+  get_instancia_add
   frontend_update
   backend_update
 }
