@@ -58,7 +58,6 @@ get_urls() {
 }
 
 software_update() {
-  get_link_git
   get_instancia_add
   frontend_update
   backend_update
