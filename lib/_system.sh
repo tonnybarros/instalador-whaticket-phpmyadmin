@@ -76,11 +76,13 @@ system_node_install() {
   sudo su - root <<EOF
   curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
   apt-get install -y nodejs
+  sleep 2
+  npm install -g npm@latest
+  
 EOF
 
   sleep 2
 }
-
 #######################################
 # installs docker
 # Arguments:
