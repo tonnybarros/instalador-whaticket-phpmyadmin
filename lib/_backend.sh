@@ -15,13 +15,17 @@ backend_mysql_create() {
   sleep 2
 
   sudo su - root <<EOF
-    mysql -u root -p${mysql_root_password}
-    CREATE USER '${instancia_add}'@'%' IDENTIFIED BY '${mysql_root_password}';
-    CREATE DATABASE ${instancia_add} character set UTF8mb4 collate utf8mb4_bin;
-    GRANT ALL PRIVILEGES ON ${instancia_add}.* TO ${instancia_add}@'%';
-    FLUSH PRIVILEGES;
-    exit
-
+  usermod -aG docker owenzap
+  docker run --name whaticketdb \
+                -e MYSQL_ROOT_PASSWORD=${mysql_root_password} \
+                -e MYSQL_DATABASE=${db_name} \
+                -e MYSQL_USER=${db_user} \
+                -e MYSQL_PASSWORD=${db_pass} \
+             --restart always \
+                -p 3306:3306 \
+                -d mariadb:latest \
+             --character-set-server=utf8mb4 \
+             --collation-server=utf8mb4_bin
 EOF
 
   sleep 2
