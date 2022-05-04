@@ -18,15 +18,13 @@ backend_mysql_create() {
   usermod -aG docker owenzap
   docker run --name whaticketdb \
            -e POSTGRES_USER=${instancia_add} \
-           -e POSTGRES_PASSWORD=${instancia_add} \
+           -e POSTGRES_PASSWORD=${mysql_root_password} \
            -p 5432:5432 \
            -v /data:/var/lib/postgresql/data -d postgres 
 EOF
 
   sleep 2
 }
-
-
 #######################################
 # sets environment variable for backend.
 # Arguments:
@@ -57,12 +55,15 @@ FRONTEND_URL=${frontend_url}
 PROXY_PORT=443
 PORT=${backend_port}
 DB_HOST=localhost
-DB_DIALECT=mysql
+DB_DIALECT=postgres
 DB_USER=${instancia_add}
 DB_PASS=${mysql_root_password}
 DB_NAME=${instancia_add}
 JWT_SECRET=${jwt_secret}
 JWT_REFRESH_SECRET=${jwt_refresh_secret}
+REDIS_URI=regis://:${mysql_root_password}@127.0.0.1:6379
+REDIS_OPT_LIMITER_MAX=1
+REGIS_OPT_LIMITER_DURATION=3000
 USER_LIMIT=3
 CONNECTIONS_LIMIT=1
 [-]EOF
