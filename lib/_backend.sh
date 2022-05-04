@@ -17,19 +17,15 @@ backend_mysql_create() {
   sudo su - root <<EOF
   usermod -aG docker owenzap
   docker run --name whaticketdb \
-                -e MYSQL_ROOT_PASSWORD=${mysql_root_password} \
-                -e MYSQL_DATABASE=${db_name} \
-                -e MYSQL_USER=${db_user} \
-                -e MYSQL_PASSWORD=${db_pass} \
-             --restart always \
-                -p 3306:3306 \
-                -d mariadb:latest \
-             --character-set-server=utf8mb4 \
-             --collation-server=utf8mb4_bin
+           -e POSTGRES_USER=${instancia_add} \
+           -e POSTGRES_PASSWORD=${instancia_add} \
+           -p 5432:5432 \
+           -v /data:/var/lib/postgresql/data -d postgres 
 EOF
 
   sleep 2
 }
+
 
 #######################################
 # sets environment variable for backend.
