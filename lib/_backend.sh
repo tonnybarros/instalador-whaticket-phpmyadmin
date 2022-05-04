@@ -1,6 +1,25 @@
 #!/bin/bash
 #
 # functions for setting up app backend
+#######################################
+# creates REDIS db using docker
+# Arguments:
+#   None
+#######################################
+backend_redis_create() {
+  print_banner
+  printf "${WHITE} 💻 Criando Redis...${GRAY_LIGHT}"
+  printf "\n\n"
+
+  sleep 2
+
+  sudo su - root <<EOF
+  usermod -aG docker owenzap
+  docker run -e TZ="America/Sao_Paulo" --name redis --restart always  -p 6379:6379 -d redis:alpine redis-server --requirepass "${mysql_root_password}"
+EOF
+
+  sleep 2
+}
 
 #######################################
 # creates mysql db using docker
