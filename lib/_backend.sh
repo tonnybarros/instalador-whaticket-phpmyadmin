@@ -15,7 +15,7 @@ backend_redis_create() {
 
   sudo su - root <<EOF
   usermod -aG docker owenzap
-  docker run --name whaticket-redis -p 6379:6379 -d -t redis:alpine
+  docker run -e TZ="America/Sao_Paulo" --name redis-whaticket -p 6379:6379 -d --restart=always redis:latest redis-server --appendonly yes --requirepass "${mysql_root_password}"
 EOF
 
   sleep 2
@@ -80,7 +80,7 @@ DB_PASS=${mysql_root_password}
 DB_NAME=${instancia_add}
 JWT_SECRET=${jwt_secret}
 JWT_REFRESH_SECRET=${jwt_refresh_secret}
-REDIS_URI=redis://:@127.0.0.1:6379
+REDIS_URI=redis://:${mysql_root_password}@127.0.0.1:6379
 REDIS_OPT_LIMITER_MAX=1
 REGIS_OPT_LIMITER_DURATION=3000
 USER_LIMIT=3
