@@ -15,7 +15,7 @@ backend_redis_create() {
 
   sudo su - root <<EOF
   usermod -aG docker owenzap
-  docker run -e TZ="America/Sao_Paulo" --name redis-whaticket -p 6379:6379 -d --restart=always redis:latest redis-server --appendonly yes --requirepass "${mysql_root_password}"
+  docker run -e TZ="America/Sao_Paulo" --name redis-whaticket -p 6379:6379 -d --restart=always redis:latest redis-server --appendonly yes --requirepass "123456"
 EOF
 
   sleep 2
@@ -73,16 +73,20 @@ BACKEND_URL=${backend_url}
 FRONTEND_URL=${frontend_url}
 PROXY_PORT=443
 PORT=${backend_port}
+
 DB_HOST=localhost
 DB_DIALECT=postgres
 DB_USER=${instancia_add}
 DB_PASS=${mysql_root_password}
 DB_NAME=${instancia_add}
+
 JWT_SECRET=${jwt_secret}
 JWT_REFRESH_SECRET=${jwt_refresh_secret}
-REDIS_URI=redis://:${mysql_root_password}@127.0.0.1:6379
+
+REDIS_URI=redis://:123456@127.0.0.1:6379
 REDIS_OPT_LIMITER_MAX=1
 REGIS_OPT_LIMITER_DURATION=3000
+
 USER_LIMIT=3
 CONNECTIONS_LIMIT=1
 [-]EOF
