@@ -26,24 +26,7 @@ EOF
 # Arguments:
 #   None
 #######################################
-backend_mysql_create() {
-  print_banner
-  printf "${WHITE} 💻 Criando banco de dados...${GRAY_LIGHT}"
-  printf "\n\n"
 
-  sleep 2
-
-  sudo su - root <<EOF
-  usermod -aG docker owenzap
-  docker run --name whaticketdb \
-           -e POSTGRES_USER=${instancia_add} \
-           -e POSTGRES_PASSWORD=${mysql_root_password} \
-           -p 5432:5432 \
-           -v /data:/var/lib/postgresql/data -d postgres 
-EOF
-
-  sleep 2
-}
 #######################################
 # sets environment variable for backend.
 # Arguments:
