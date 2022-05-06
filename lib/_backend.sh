@@ -85,7 +85,7 @@ DB_NAME=${instancia_add}
 JWT_SECRET=${jwt_secret}
 JWT_REFRESH_SECRET=${jwt_refresh_secret}
 
-REDIS_URI=redis://:123456@127.0.0.1:6379
+REDIS_URI=redis://:123456@127.0.0.1:${redis_port}
 REDIS_OPT_LIMITER_MAX=1
 REGIS_OPT_LIMITER_DURATION=3000
 
