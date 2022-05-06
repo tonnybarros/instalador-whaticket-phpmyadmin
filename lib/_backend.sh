@@ -15,8 +15,8 @@ backend_redis_create() {
 
   sudo su - root <<EOF
   usermod -aG docker owenzap
-  docker run -e TZ="America/Sao_Paulo" --name redis-whaticket -p 6379:6379 -d --restart=always redis:latest redis-server --appendonly yes --requirepass "123456"
-EOF
+ docker run -e TZ="America/Sao_Paulo" --name redis-${instancia_add} -p ${redis_port}:${redis_port} -d --restart=always redis:latest redis-server --appendonly yes --requirepass "123456"
+ EOF
 
   sleep 2
 }
