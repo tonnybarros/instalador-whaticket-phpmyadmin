@@ -41,7 +41,7 @@ backend_mysql_create() {
   ALTER USER ${instancia_add} PASSWORD '${mysql_root_password}';
   \q
   exit
-  EOF
+EOF
 
   sleep 2
 }
