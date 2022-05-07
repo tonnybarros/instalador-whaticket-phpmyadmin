@@ -52,8 +52,8 @@ inquiry_options
 # backend related
 system_git_clone
 backend_set_env
-backend_redis_create
 backend_mysql_create
+backend_redis_create
 backend_node_dependencies
 backend_node_build
 backend_db_migrate
