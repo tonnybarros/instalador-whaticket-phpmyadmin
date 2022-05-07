@@ -8,7 +8,7 @@
 #######################################
 backend_redis_create() {
   print_banner
-  printf "${WHITE} 💻 Criando Redis...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Criando Redis & Banco Postgres...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -17,19 +17,6 @@ backend_redis_create() {
   usermod -aG docker owenzap
   docker run --name redis-${instancia_add} -p ${redis_port}:6379 --restart always --detach redis redis-server --requirepass 123456
   EOF
-
-  sleep 2
-}
-
-#######################################
-# creates mysql db using docker
-# Arguments:
-#   None
-#######################################
-backend_mysql_create() {
-  print_banner
-  printf "${WHITE} 💻 Criando banco de dados...${GRAY_LIGHT}"
-  printf "\n\n"
 
   sleep 2
 
@@ -43,7 +30,8 @@ backend_mysql_create() {
   exit
 EOF
 
-  sleep 2
+sleep 2
+
 }
 
 #######################################
