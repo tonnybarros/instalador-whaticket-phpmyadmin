@@ -16,11 +16,9 @@ backend_redis_create() {
   sudo su - root <<EOF
   usermod -aG docker owenzap
   docker run --name redis-${instancia_add} -p ${redis_port}:6379 --restart always --detach redis redis-server --requirepass 123456
-  EOF
-
+  
   sleep 2
 
-  sudo su - root <<EOF
   sudo su - postgres
   createdb ${instancia_add};
   psql
