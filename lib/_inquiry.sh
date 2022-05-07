@@ -1,5 +1,13 @@
 #!/bin/bash
 
+get_mysql_root_password() {
+  
+  print_banner
+  printf "${WHITE} 💻 Insira senha que irá administrar as instalações:${GRAY_LIGHT}"
+  printf "\n\n"
+  read -p "> " mysql_root_password
+}
+
 get_link_git() {
   
   print_banner
@@ -59,6 +67,7 @@ get_redis_port() {
 
 
 get_urls() {
+  get_mysql_root_password
   get_link_git
   get_instancia_add
   get_frontend_url
