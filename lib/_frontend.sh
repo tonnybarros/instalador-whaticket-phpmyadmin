@@ -128,7 +128,7 @@ frontend_start_pm2() {
 
   sudo su - owenzap <<EOF
   cd /home/owenzap/${instancia_add}/frontend
-  pm2 start server.js --name ${instancia_add}-owenzap-frontend
+  pm2 start server.js --watch -i 0 --name ${instancia_add}-frontend
   pm2 save
 EOF
 
