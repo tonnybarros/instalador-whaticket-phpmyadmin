@@ -15,7 +15,7 @@ backend_redis_create() {
 
   sudo su - root <<EOF
   usermod -aG docker owenzap
-  docker run --name redis-${instancia_add} -p ${redis_port}:6379 --restart always --detach redis redis-server --requirepass 123456
+  docker run --name redis-${instancia_add} -p ${redis_port}:6379 --restart always --detach redis redis-server --requirepass ${mysql_root_password}
   
   sleep 2
 
@@ -71,12 +71,12 @@ DB_NAME=${instancia_add}
 JWT_SECRET=${jwt_secret}
 JWT_REFRESH_SECRET=${jwt_refresh_secret}
 
-REDIS_URI=redis://:123456@127.0.0.1:${redis_port}
+REDIS_URI=redis://:${mysql_root_password}@127.0.0.1:${redis_port}
 REDIS_OPT_LIMITER_MAX=1
 REGIS_OPT_LIMITER_DURATION=3000
 
-USER_LIMIT=3
-CONNECTIONS_LIMIT=1
+USER_LIMIT=${max_user}
+CONNECTIONS_LIMIT=${max_whats}
 [-]EOF
 EOF
 
