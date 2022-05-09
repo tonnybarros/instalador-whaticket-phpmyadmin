@@ -24,6 +24,22 @@ get_instancia_add() {
   read -p "> " instancia_add
 }
 
+get_max_whats() {
+  
+  print_banner
+  printf "${WHITE} 💻 Digite o numero maximo de conexões que a empresa ${instancia_add} poderá cadastrar (Deixe em branco para ilimitado):${GRAY_LIGHT}"
+  printf "\n\n"
+  read -p "> " max_whats
+}
+
+get_max_user() {
+  
+  print_banner
+  printf "${WHITE} 💻 Digite o numero maximo de atendentes que a empresa ${instancia_add} poderá cadastrar (Deixe em branco para ilimitado):${GRAY_LIGHT}"
+  printf "\n\n"
+  read -p "> " max_user
+}
+
 get_frontend_url() {
   
   print_banner
@@ -70,6 +86,8 @@ get_urls() {
   get_mysql_root_password
   get_link_git
   get_instancia_add
+  get_max_whats
+  get_max_user
   get_frontend_url
   get_backend_url
   get_frontend_port
