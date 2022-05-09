@@ -297,15 +297,15 @@ system_nginx_conf() {
 
   sleep 2
 
-#sudo su - root << EOF
+sudo su - root << EOF
 
-#cat > /etc/nginx/conf.d/owenzap.conf << 'END'
-#client_max_body_size 20M;
-#END
+cat > /etc/nginx/conf.d/owenzap.conf << 'END'
+client_max_body_size 20M;
+END
 
-#EOF
+EOF
 
-  #sleep 2
+  sleep 2
 }
 
 #######################################
