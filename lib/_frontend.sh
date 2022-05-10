@@ -57,7 +57,7 @@ frontend_update() {
 
   sudo su - owenzap <<EOF
   cd /home/owenzap/${instancia_add}
-  pm2 stop ${instancia_add}-owenzap-frontend
+  pm2 stop ${instancia_add}-frontend
   git pull
   cd /home/owenzap/${instancia_add}/frontend
   npm install
