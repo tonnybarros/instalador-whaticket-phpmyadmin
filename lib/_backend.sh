@@ -138,7 +138,7 @@ backend_update() {
 
   sudo su - owenzap <<EOF
   cd /home/owenzap/${instancia_add}
-  pm2 stop ${instancia_add}-owenzap-backend
+  pm2 stop ${instancia_add}-backend
   git pull
   cd /home/owenzap/${instancia_add}/backend
   npm install
