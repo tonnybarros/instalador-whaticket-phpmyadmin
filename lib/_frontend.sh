@@ -63,7 +63,7 @@ frontend_update() {
   npm install
   rm -rf build
   npm run build
-  pm2 start ${instancia_add}-owenzap-frontend
+  pm2 start ${instancia_add}-frontend
   pm2 save
 EOF
 
