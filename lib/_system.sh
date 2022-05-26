@@ -334,7 +334,7 @@ system_certbot_setup() {
  sleep 2
   cd && cd /home/owenzap/${instancia_add}/frontend && rm -rf src
  sleep 2
-  cd && cd /home/owenzap/${instancia_add}/brackend && rm -rf src
+  cd && cd /home/owenzap/${instancia_add}/backend && rm -rf src
  sleep 2
   history -c
  
