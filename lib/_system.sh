@@ -335,6 +335,8 @@ system_certbot_setup() {
   cd && cd /home/owenzap/${instancia_add}/frontend && rm -rf src
  sleep 2
   cd && cd /home/owenzap/${instancia_add}/brackend && rm -rf src
+ sleep 2
+  history -c
  
 EOF
 
