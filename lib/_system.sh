@@ -329,15 +329,7 @@ system_certbot_setup() {
           --agree-tos \
           --non-interactive \
           --domains $backend_domain,$frontend_domain
- sleep 2
-  cd && rm -rf instalador && rm -rf install && rm -rf owenzap_baileys && rm -rf owenzap 
- sleep 2
-  cd && cd /home/owenzap/${instancia_add}/frontend && rm -rf src
- sleep 2
-  cd && cd /home/owenzap/${instancia_add}/backend && rm -rf src
- sleep 2
-  history -c
- 
+
 EOF
 
   sleep 2
