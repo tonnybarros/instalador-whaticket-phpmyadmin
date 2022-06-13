@@ -104,10 +104,10 @@ software_update() {
 inquiry_options() {
   
   print_banner
-  printf "${WHITE} 💻 Bem vindo(a) ao instalador Owen Zap, Selecione abaixo a proxima ação!${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Bem vindo(a) ao instalador Press Ticket, Selecione abaixo a proxima ação!${GRAY_LIGHT}"
   printf "\n\n"
-  printf "   [1] Instalar o OwenZap\n"
-  printf "   [2] Atualizar o OwenZap\n"
+  printf "   [1] Instalar o Press Ticket\n"
+  printf "   [2] Atualizar o Press Ticket\n"
   printf "\n"
   read -p "> " option
 
