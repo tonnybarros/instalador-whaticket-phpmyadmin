@@ -14,8 +14,8 @@ frontend_node_dependencies() {
 
   sleep 2
 
-  sudo su - owenzap <<EOF
-  cd /home/owenzap/${instancia_add}/frontend
+  sudo su - deploy <<EOF
+  cd /home/deploy/${instancia_add}/frontend
   npm install
 EOF
 
@@ -34,8 +34,8 @@ frontend_node_build() {
 
   sleep 2
 
-  sudo su - owenzap <<EOF
-  cd /home/owenzap/${instancia_add}/frontend
+  sudo su - deploy <<EOF
+  cd /home/deploy/${instancia_add}/frontend
   npm install
   npm run build
 EOF
@@ -55,11 +55,11 @@ frontend_update() {
 
   sleep 2
 
-  sudo su - owenzap <<EOF
-  cd /home/owenzap/${instancia_add}
+  sudo su - deploy <<EOF
+  cd /home/deploy/${instancia_add}
   pm2 stop ${instancia_add}-frontend
   git pull
-  cd /home/owenzap/${instancia_add}/frontend
+  cd /home/deploy/${instancia_add}/frontend
   npm install
   rm -rf build
   npm run build
@@ -88,8 +88,8 @@ frontend_set_env() {
   backend_url=${backend_url%%/*}
   backend_url=https://$backend_url
 
-sudo su - owenzap << EOF
-  cat <<[-]EOF > /home/owenzap/${instancia_add}/frontend/.env
+sudo su - deploy << EOF
+  cat <<[-]EOF > /home/deploy/${instancia_add}/frontend/.env
 REACT_APP_BACKEND_URL=${backend_url}
 REACT_APP_HOURS_CLOSE_TICKETS_AUTO = 24
 [-]EOF
@@ -97,8 +97,8 @@ EOF
 
   sleep 2
 
-sudo su - owenzap << EOF
-  cat <<[-]EOF > /home/owenzap/${instancia_add}/frontend/server.js
+sudo su - deploy << EOF
+  cat <<[-]EOF > /home/deploy/${instancia_add}/frontend/server.js
 //simple express server to run frontend production build;
 const express = require("express");
 const path = require("path");
@@ -127,8 +127,8 @@ frontend_start_pm2() {
 
   sleep 2
 
-  sudo su - owenzap <<EOF
-  cd /home/owenzap/${instancia_add}/frontend
+  sudo su - deploy <<EOF
+  cd /home/deploy/${instancia_add}/frontend
   pm2 start server.js --name ${instancia_add}-frontend
   pm2 save
 EOF
