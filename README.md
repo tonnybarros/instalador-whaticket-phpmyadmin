@@ -17,7 +17,7 @@ O instalador já instala junto o phpmyadmin
 
 Para isso escolher a porta phpmyadmin na instalação
 
-Acessar via http://IP/phpmyadmin
+Acessar via http://IP:porta/phpmyadmin
 
 Instalações ilimitadas no mesmo servidor;
 
