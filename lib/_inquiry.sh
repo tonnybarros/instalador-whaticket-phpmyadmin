@@ -3,7 +3,7 @@
 get_mysql_root_password() {
   
   print_banner
-  printf "${WHITE} 💻 Insira senha padrão para o sistema:${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Insira senha padrão para o sistema (senha root mysql):${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " mysql_root_password
 }
@@ -76,9 +76,9 @@ get_backend_port() {
 get_redis_port() {
   
   print_banner
-  printf "${WHITE} 💻 Digite a porta do REDIS / AGENDAMENTO MSG para a ${instancia_add}; Ex: 5000 A 5999 ${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Digite a porta do PHPMYADMIN  para a ${instancia_add}; Ex: 8080 ${GRAY_LIGHT}"
   printf "\n\n"
-  read -p "> " redis_port
+  read -p "> " phpmyadmin_port
 }
 
 
@@ -92,7 +92,7 @@ get_urls() {
   get_backend_url
   get_frontend_port
   get_backend_port
-  get_redis_port
+  get_phpmyadmin_port
 }
 
 software_update() {
