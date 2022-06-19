@@ -16,7 +16,7 @@ backend_redis_create() {
   sudo su - root <<EOF
   usermod -aG docker deploy
   docker network create ${instancia_add}
-  docker run --name mysql-${instancia_add} -e --network ${instancia_add} MYSQL_ROOT_PASSWORD=${mysql_root_password} -e MYSQL_DATABASE=${instancia_add} -e MYSQL_USER=${instancia_add} -e MYSQL_PASSWORD=${mysql_root_password} --restart always -p 3306:3306 -d mariadb:latest --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
+  docker run --name mysql-${instancia_add} -e MYSQL_ROOT_PASSWORD=${mysql_root_password} -e MYSQL_DATABASE=${instancia_add} -e MYSQL_USER=${instancia_add} -e MYSQL_PASSWORD=${mysql_root_password} --restart always -p 3306:3306 -d mariadb:latest --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
 EOF
 sleep 2
 
