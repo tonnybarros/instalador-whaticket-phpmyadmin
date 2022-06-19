@@ -73,7 +73,7 @@ get_backend_port() {
   read -p "> " backend_port
 }
 
-get_redis_port() {
+get_phpmyadmin_port() {
   
   print_banner
   printf "${WHITE} 💻 Digite a porta do PHPMYADMIN  para a ${instancia_add}; Ex: 8080 ${GRAY_LIGHT}"
