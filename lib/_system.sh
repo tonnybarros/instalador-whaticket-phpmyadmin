@@ -79,10 +79,6 @@ system_node_install() {
   sleep 2
   npm install -g npm@latest
   sleep 2
-  sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-  sudo apt-get update -y && sudo apt-get -y install postgresql
-  sleep 2
   sudo timedatectl set-timezone America/Sao_Paulo
   
 EOF
@@ -177,7 +173,8 @@ system_puppeteer_dependencies() {
                       libappindicator1 \
                       libnss3 \
                       lsb-release \
-                      xdg-utils
+                      xdg-utils \
+                      docker-compose
 EOF
 
   sleep 2
