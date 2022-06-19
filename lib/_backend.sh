@@ -15,19 +15,7 @@ backend_redis_create() {
 
   sudo su - root <<EOF
   usermod -aG docker deploy
-  docker run --name redis-${instancia_add} -p ${redis_port}:6379 --restart always --detach redis redis-server --requirepass ${mysql_root_password}
-  
-  sleep 2
-
-  sudo su - postgres
-  createdb ${instancia_add};
-  psql
-  CREATE USER ${instancia_add} SUPERUSER INHERIT CREATEDB CREATEROLE;
-  ALTER USER ${instancia_add} PASSWORD '${mysql_root_password}';
-  \q
-  exit
-EOF
-
+  docker run --name mysql-${instancia_add} -e MYSQL_ROOT_PASSWORD=${mysql_root_password} -e MYSQL_DATABASE=${instancia_add} -e MYSQL_USER=${instancia_add} -e MYSQL_PASSWORD=${mysql_root_password} --restart always -p 3306:3306 -d mariadb:latest --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
 sleep 2
 
 }
@@ -63,7 +51,7 @@ PROXY_PORT=443
 PORT=${backend_port}
 
 DB_HOST=localhost
-DB_DIALECT=postgres
+DB_DIALECT=mysql
 DB_USER=${instancia_add}
 DB_PASS=${mysql_root_password}
 DB_NAME=${instancia_add}
@@ -71,9 +59,7 @@ DB_NAME=${instancia_add}
 JWT_SECRET=${jwt_secret}
 JWT_REFRESH_SECRET=${jwt_refresh_secret}
 
-REDIS_URI=redis://:${mysql_root_password}@127.0.0.1:${redis_port}
-REDIS_OPT_LIMITER_MAX=1
-REGIS_OPT_LIMITER_DURATION=3000
+PMA_PORT=${phpmyadmin_port}
 
 USER_LIMIT=${max_user}
 CONNECTIONS_LIMIT=${max_whats}
