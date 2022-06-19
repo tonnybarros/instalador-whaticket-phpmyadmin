@@ -9,9 +9,15 @@ ACESSANDO DIRETORIO DO INSTALADOR & INICIANDO INSTALAÇÕES ADICIONAIS (USAR EST
 cd && cd ./install_pressticket && sudo ./install_instancia
 ```
 
-19/06/2022;
-Instalação usando docker mariadb;
-O instalador já instala junto o phpmyadmin;
-Para isso escolher a porta phpmyadmin na instalação;
-Acessar via http://IP/phpmyadmin;
+19/06/2022
+
+Instalação usando docker mariadb
+
+O instalador já instala junto o phpmyadmin
+
+Para isso escolher a porta phpmyadmin na instalação
+
+Acessar via http://IP/phpmyadmin
+
 Instalações ilimitadas no mesmo servidor;
+
