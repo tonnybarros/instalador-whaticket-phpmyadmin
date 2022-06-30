@@ -53,6 +53,7 @@ PROXY_PORT=443
 PORT=${backend_port}
 
 DB_HOST=localhost
+DB_PORT=${mysql_port}
 DB_DIALECT=mysql
 DB_USER=${instancia_add}
 DB_PASS=${mysql_root_password}
