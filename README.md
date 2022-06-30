@@ -1,7 +1,7 @@
 FAZENDO DOWNLOAD DO INSTALADOR & INICIANDO A PRIMEIRA INSTALAÇÃO (USAR SOMENTE PARA PRIMEIRA INSTALAÇÃO):
 
 ```bash
-sudo apt install -y git && git clone https://github.com/tectonnybarros/install_pressticket-phpmyadmin.git && sudo chmod -R 777 ./install_pressticket && cd ./install_pressticket && sudo ./install_primaria
+sudo apt install -y git && git clone https://github.com/tectonnybarros/install_pressticket-phpmyadmin.git install_pressticket && sudo chmod -R 777 ./install_pressticket && cd ./install_pressticket && sudo ./install_primaria
 ```
 
 ACESSANDO DIRETORIO DO INSTALADOR & INICIANDO INSTALAÇÕES ADICIONAIS (USAR ESTE COMANDO PARA SEGUNDA OU MAIS INSTALAÇÃO:
