@@ -73,6 +73,15 @@ get_phpmyadmin_port() {
   read -p "> " phpmyadmin_port
 }
 
+get_mysql_port() {
+  
+  print_banner
+  printf "${WHITE} 💻 Digite a porta MYSQL para ${instancia_add}; Ex: 3306 (3306, 3307...) ${GRAY_LIGHT}"
+  printf "\n\n"
+  read -p "> " mysql_port
+}
+
+
 
 get_urls() {
   get_mysql_root_password
@@ -84,6 +93,7 @@ get_urls() {
   get_frontend_port
   get_backend_port
   get_phpmyadmin_port
+  get_mysql_port
 }
 
 software_update() {
