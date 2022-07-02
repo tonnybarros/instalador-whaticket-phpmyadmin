@@ -15,7 +15,7 @@ backend_redis_create() {
 
   sudo su - root <<EOF
   usermod -aG docker deploy
-  docker run --name mysql-${instancia_add} -e MYSQL_ROOT_PASSWORD=${mysql_root_password} -e MYSQL_DATABASE=${instancia_add} -e MYSQL_USER=${instancia_add} -e MYSQL_PASSWORD=${mysql_root_password} --restart always -p 3306:3306 -d mariadb:latest --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
+  docker run --name mysql-${instancia_add} -e MYSQL_ROOT_PASSWORD=${mysql_root_password} -e MYSQL_DATABASE=${instancia_add} -e MYSQL_USER=${instancia_add} -e MYSQL_PASSWORD=${mysql_root_password} --restart always -p ${mysql_port}:3306 -d mariadb:latest --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
   docker run --name phpmyadmin-${instancia_add} -d --link mysql-${instancia_add}:db -p ${phpmyadmin_port}:80 phpmyadmin/phpmyadmin
 EOF
 sleep 2
@@ -53,6 +53,7 @@ PROXY_PORT=443
 PORT=${backend_port}
 
 DB_HOST=localhost
+DB_PORT=${mysql_port}
 DB_DIALECT=mysql
 DB_USER=${instancia_add}
 DB_PASS=${mysql_root_password}
@@ -70,6 +71,30 @@ CONNECTIONS_LIMIT=${max_whats}
 EOF
 
   sleep 2
+
+sudo su - deploy << EOF
+  cat <<[-]EOF > /home/deploy/${instancia_add}/backend/src/config/database.ts
+require("../bootstrap");
+
+module.exports = {
+  define: {
+    charset: "utf8mb4",
+    collate: "utf8mb4_bin"
+  },
+  dialect: process.env.DB_DIALECT || "mysql",
+  timezone: "-03:00",
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  logging: false
+};
+[-]EOF
+EOF
+
+  sleep 2
+
 }
 
 #######################################
