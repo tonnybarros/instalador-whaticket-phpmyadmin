@@ -23,7 +23,7 @@ Ao terminar a instalação é só logar com os dados padrão, caso não saiba ve
 FAZENDO DOWNLOAD DO INSTALADOR & INICIANDO A PRIMEIRA INSTALAÇÃO (USAR SOMENTE PARA PRIMEIRA INSTALAÇÃO):
 
 ```bash
-sudo apt install -y git && git clone https://github.com/tonnybarros/install_pressticket-phpmyadmin.git instalador && sudo chmod -R 777 ./instalador && cd ./instalador && sudo ./install_primaria
+sudo apt install -y git && git clone https://github.com/tonnybarros/instalador.git instalador && sudo chmod -R 777 ./instalador && cd ./instalador && sudo ./install_primaria
 ```
 
 ACESSANDO DIRETORIO DO INSTALADOR & INICIANDO INSTALAÇÕES ADICIONAIS (USAR ESTE COMANDO PARA SEGUNDA OU MAIS INSTALAÇÃO:
