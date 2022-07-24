@@ -8,6 +8,14 @@ get_mysql_root_password() {
   read -p "> " mysql_root_password
 }
 
+get_link_git() {
+  
+  print_banner
+  printf "${WHITE} 💻 Insira o link do GITHUB do sistema:${GRAY_LIGHT}"
+  printf "\n\n"
+  read -p "> " link_git
+}
+
 get_instancia_add() {
   
   print_banner
@@ -85,6 +93,7 @@ get_mysql_port() {
 
 get_urls() {
   get_mysql_root_password
+  get_link_git
   get_instancia_add
   get_max_whats
   get_max_user
