@@ -4,7 +4,7 @@ Ao executar o comando abaixo, vai aparecer um menu para instalar ou atualizar.
 Para instalar digite 1 e enter
 Vai solicitar os seguintes dados
 1. Senha mysql
-2. Nome da empresa (em minúsculo), esse nome é para diferenciar as instalações, tanto do Press Ticket, como dos recursos isolados via Docker.
+2. Nome da empresa (em minúsculo), esse nome é para diferenciar as instalações, tanto do Whaticket, como dos recursos isolados via Docker.
 3. Número máximo de conexões WhatsApp que essa instalação poderá usar
 4. Número máximo de atendentes para essa instalação
 5. Domínio do frontend, geralmente app.seusite.com.br
@@ -17,7 +17,7 @@ O acesso ao phpmyadmin é feito por IP do servidor, ex. http://111.111.111.111:8
 
 Seguindo todos os passos acima e não deixando faltar nenhuma da informações solicitadas, é só aguardar o instalador terminar a instalação.
 
-Ao terminar a instalação é só logar com os dados padrão, caso não saiba veja na página do projeto [Press Ticket aqui](https://github.com/rtenorioh/Press-Ticket).
+Ao terminar a instalação é só logar com os dados padrão, caso não saiba veja na página do projeto [Whaticket aqui](https://github.com/canove/whaticket).
 
 ## INSTALAÇÃO 
 FAZENDO DOWNLOAD DO INSTALADOR & INICIANDO A PRIMEIRA INSTALAÇÃO (USAR SOMENTE PARA PRIMEIRA INSTALAÇÃO):
@@ -31,16 +31,13 @@ ACESSANDO DIRETORIO DO INSTALADOR & INICIANDO INSTALAÇÕES ADICIONAIS (USAR EST
 cd && cd ./instalador && sudo ./install_instancia
 ```
 ## Recursos 
-- Multi instalador ilimitado [Press Ticket](https://github.com/rtenorioh/Press-Ticket)
+- Multi instalador ilimitado [Whaticket](https://github.com/canove/whaticket)
 - Recursos isolados para cada instalação
 - Instala Docker Mariadb (isolados)
 - Instala Docker Phpmyadmin (isolados)
 - instala nginx
 - Configura os domínios com certificados de segurança
-- Atualiza press ticket para última versão.
-
-## Versão Debian
-- [Press-Ticket-Installer](https://github.com/robsonwr/Press-Ticket-Installer)
+- Atualiza Whaticket para última versão.
 
 ## Instalação manual
-- [Press Ticket](https://github.com/rtenorioh/Press-Ticket)
+- [Whaticket](https://github.com/canove/whaticket)
