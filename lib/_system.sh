@@ -217,6 +217,10 @@ system_snapd_install() {
   apt install -y snapd
   snap install core
   snap refresh core
+  sleep 2
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  sleep 2
+  apt install -y ./google-chrome-stable_current_amd64.deb -y
 EOF
 
   sleep 2
