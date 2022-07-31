@@ -51,6 +51,7 @@ NODE_ENV=
 BACKEND_URL=${backend_url}
 FRONTEND_URL=${frontend_url}
 PROXY_PORT=443
+CHROME_BIN=/usr/bin/google-chrome-stable
 PORT=${backend_port}
 
 DB_HOST=localhost
