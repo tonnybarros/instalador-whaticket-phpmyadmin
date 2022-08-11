@@ -89,7 +89,13 @@ get_mysql_port() {
   read -p "> " mysql_port
 }
 
-
+get_redis_port() {
+  
+  print_banner
+  printf "${WHITE} 💻 Digite a porta do REDIS/AGENDAMENTO MSG para a ${instancia_add}; Ex: 5000 A 5999 ${GRAY_LIGHT}"
+  printf "\n\n"
+  read -p "> " redis_port
+}
 
 get_urls() {
   get_mysql_root_password
@@ -103,6 +109,7 @@ get_urls() {
   get_backend_port
   get_phpmyadmin_port
   get_mysql_port
+  get_redis_port
 }
 
 software_update() {
